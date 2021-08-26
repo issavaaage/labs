@@ -1,0 +1,15 @@
+<div class="content">
+  <div class="polling">
+    <div class="header">
+      <p>Start polling to request random <a href="https://random.dog/" target="_blank">dog</a> images!</p>
+      <p>Polling status: {{pollingStatus}}</p>
+    </div>
+    <div class="controllers">
+      <button class="start" #start>Start polling</button>
+      <button class="stop" #stop>Stop polling</button>
+    </div>
+    <div class="image">
+      <img [src]="startStrim$ | async" #image alt="">
+    </div>
+  </div>
+</div>

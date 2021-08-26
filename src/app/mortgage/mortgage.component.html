@@ -1,0 +1,29 @@
+<div class="content">
+  <div class="mortgage" [formGroup]="mortgageForm">
+    <div class="header">
+      <h1>Mortgage Calculator</h1>
+    </div>
+    <label for="amount">
+      <p>Mortgage Amount</p>
+      <input type="text" id="amount" formControlName="amount">
+    </label>
+    <label for="rate">
+      <p>Interest Rate (%)</p>
+      <input type="text" id="rate" formControlName="rate">
+    </label>
+    <label>
+      <p>Mortgage Length</p>
+      <span class="input">
+        <input type="radio" value="180" (change)="setupLength(180)" [checked]="getLength() === 180">
+        <small>15 yr</small>
+      </span>
+      <span class="input">
+        <input type="radio" value="360" (change)="setupLength(360)" [checked]="getLength() === 360">
+        <small>30 yr</small>
+      </span>
+    </label>
+    <div class="result">
+      <p>Your expected monthly payment is: {{strim$ | async}}$</p>
+    </div>
+  </div>
+</div>
