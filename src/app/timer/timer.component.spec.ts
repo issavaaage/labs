@@ -22,4 +22,18 @@ describe('TimerComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('should return click strim', () => {
+    let strim$ = component.clickStrim();
+    strim$.subscribe(value => {
+      expect(value).toBeTruthy();
+    });
+  })
+
+  it('should return timer strim', () => {
+    let strim$ = component.timerStrim();
+    strim$.subscribe(value => {
+      expect(value).toBeTruthy();
+    })
+  })
 });

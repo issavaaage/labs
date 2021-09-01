@@ -21,7 +21,7 @@ export class MortgageComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
-    this.setupStrim();
+    this.strim$ = this.setupStrim();
   }
 
   setupLength(length: number) {
@@ -33,10 +33,10 @@ export class MortgageComponent implements OnInit {
   }
 
   setupStrim() {
-    this.strim$ = combineLatest(
+    return combineLatest(
       this.mortgageForm.get('amount')!.valueChanges.pipe(map(val => Number(val))),
       this.mortgageForm.get('rate')!.valueChanges.pipe(map(val => Number(val))),
-      this.mortgageForm.get('length')!.valueChanges
+      this.mortgageForm.get('length')!.valueChanges.pipe(map(val => Number(val)))
     ).pipe(
       map(([loanAmount, interest, loanLength]) => {
         return this.calculateMortgage(loanAmount, interest, loanLength);

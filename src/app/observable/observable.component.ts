@@ -16,7 +16,7 @@ export class ObservableComponent implements OnInit {
 
   ngOnInit(): void {
     this.scrollHeight = this.setScrollHeight();
-    this.scrollStrim();
+    this.strim$ = this.scrollStrim();
   }
 
   setScrollHeight() {
@@ -24,7 +24,7 @@ export class ObservableComponent implements OnInit {
   }
 
   scrollStrim() {
-    this.strim$ = fromEvent(document, 'scroll').pipe(
+    return fromEvent(document, 'scroll').pipe(
       map((val: any) => {
         return Math.round(parseInt(val.path[1].pageYOffset) / (this.scrollHeight / 100)) + '%';
       })

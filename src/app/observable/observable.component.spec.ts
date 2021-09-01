@@ -9,8 +9,7 @@ describe('ObservableComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [ ObservableComponent ]
-    })
-    .compileComponents();
+    }).compileComponents();
   });
 
   beforeEach(() => {
@@ -22,4 +21,16 @@ describe('ObservableComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('should return scroll height', () => {
+    let height = component.setScrollHeight();
+    expect(height).toBeTruthy();
+  });
+
+  it('should return scroll strim', () => {
+    let strim$ = component.scrollStrim();
+    strim$.subscribe(value => {
+      expect(value).toBeTruthy();
+    })
+  })
 });

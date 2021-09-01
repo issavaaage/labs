@@ -1,4 +1,4 @@
-import {AfterViewInit, ChangeDetectorRef, Component, ElementRef, OnInit, ViewChild} from '@angular/core';
+import {AfterViewInit, ChangeDetectorRef, Component, ElementRef, ViewChild} from '@angular/core';
 import {fromEvent, interval, Observable} from "rxjs";
 import {mapTo, scan, startWith, takeUntil, takeWhile} from "rxjs/operators";
 
@@ -7,7 +7,7 @@ import {mapTo, scan, startWith, takeUntil, takeWhile} from "rxjs/operators";
   templateUrl: './timer.component.html',
   styleUrls: ['./timer.component.scss']
 })
-export class TimerComponent implements OnInit, AfterViewInit {
+export class TimerComponent implements AfterViewInit {
 
   @ViewChild('stopTimer') button!: ElementRef;
 
@@ -16,9 +16,6 @@ export class TimerComponent implements OnInit, AfterViewInit {
   COUNTDOWN_FROM: number = 10;
 
   constructor(private cd: ChangeDetectorRef) { }
-
-  ngOnInit(): void {
-  }
 
   ngAfterViewInit() {
     this.buttonClick$ = this.clickStrim();
